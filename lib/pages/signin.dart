@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'signup.dart';
-import 'dashboard.dart'; // Import the dashboard screen
+import 'dashboard.dart'; 
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});

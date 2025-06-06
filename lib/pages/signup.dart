@@ -5,43 +5,73 @@ class SignUpPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController controller = TextEditingController();
-
     return Scaffold(
-      backgroundColor: Colors.blueGrey[900],
-      body: Center(
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const Text("Create an Account", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-                const SizedBox(height: 10),
-                TextField(decoration: const InputDecoration(labelText: 'First Name')),
-                TextField(decoration: const InputDecoration(labelText: 'Last Name')),
-                TextField(decoration: const InputDecoration(labelText: 'Middle Name')),
-                TextField(decoration: const InputDecoration(labelText: 'Email Address')),
-                TextField(obscureText: true, decoration: const InputDecoration(labelText: 'Password')),
-                TextField(obscureText: true, decoration: const InputDecoration(labelText: 'Confirm Password')),
-                TextField(decoration: const InputDecoration(labelText: 'Mobile Number')),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  child: const Text("Sign Up"),
-                ),
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text("Cancel", style: TextStyle(color: Colors.red)),
-                ),
-              ],
+      backgroundColor: Colors.white, // full white background
+      appBar: AppBar(
+        title: const Text(
+          "Sign Up",
+          style: TextStyle(color: Colors.white), // make AppBar title white
+        ),
+        backgroundColor: const Color.fromARGB(255, 50, 76, 89), // Dark background to show white text
+        iconTheme: const IconThemeData(color: Colors.white), // Make back arrow white
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 10),
+            const Text(
+              "Create an Account",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
             ),
-          ),
+            const SizedBox(height: 20),
+            TextField(decoration: const InputDecoration(labelText: 'First Name')),
+            const SizedBox(height: 10),
+            TextField(decoration: const InputDecoration(labelText: 'Last Name')),
+            const SizedBox(height: 10),
+            TextField(decoration: const InputDecoration(labelText: 'Middle Name')),
+            const SizedBox(height: 10),
+            TextField(decoration: const InputDecoration(labelText: 'Email Address')),
+            const SizedBox(height: 10),
+            TextField(
+              obscureText: true,
+              decoration: const InputDecoration(labelText: 'Password'),
+            ),
+            const SizedBox(height: 10),
+            TextField(
+              obscureText: true,
+              decoration: const InputDecoration(labelText: 'Confirm Password'),
+            ),
+            const SizedBox(height: 10),
+            TextField(decoration: const InputDecoration(labelText: 'Mobile Number')),
+
+            const SizedBox(height: 30),
+
+            ElevatedButton(
+              onPressed: () {
+                // Sign up logic here
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255, 50, 76, 89),
+                padding: const EdgeInsets.symmetric(vertical: 15),
+              ),
+              child: const Text(
+                "Sign Up",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+
+            // Cancel Button
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text(
+                "Cancel",
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+          ],
         ),
       ),
     );

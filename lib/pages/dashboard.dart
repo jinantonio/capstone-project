@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'application_form.dart';
+import 'settings.dart';
+import 'certification.dart';
+import 'retirement.dart';
+import 'renewal.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -16,11 +20,20 @@ class DashboardScreen extends StatelessWidget {
           fit: BoxFit.contain,
         ),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {},
-          ),
-        ],
+  // IconButton(
+  //   icon: const Icon(Icons.payment),
+  //   tooltip: 'Make Payment',
+  //   onPressed: () {
+      
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(
+  //         builder: (context) => const PaymentScreen(), 
+  //       ),
+  //     );
+  //   },
+  // ),
+],
         centerTitle: false,
       ),
       body: Container(
@@ -28,7 +41,7 @@ class DashboardScreen extends StatelessWidget {
         width: double.infinity,
         child: Column(
           children: [
-            // Dashboard Header
+            
             Padding(
               padding: const EdgeInsets.only(top: 16.0, bottom: 24.0),
               child: Column(
@@ -50,12 +63,12 @@ class DashboardScreen extends StatelessWidget {
               ),
             ),
 
-            // Menu Grid
+           
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Column(
                 children: [
-                  // First row
+                 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -71,8 +84,8 @@ class DashboardScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      const ApplicationFormScreen()),
+                                builder: (context) => const ApplicationFormScreen(),
+                              ),
                             );
                           },
                         ),
@@ -85,44 +98,35 @@ class DashboardScreen extends StatelessWidget {
                             size: 28.0,
                           ),
                           label: 'Renew',
-                          onTap: () {}, // Add functionality here
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RegistrationDocumentsPage(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 24.0),
 
-                  // Second row
-                  Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Expanded(
                         child: _buildMenuItem(
-                          icon: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              Container(
-                                height: 32.0,
-                                width: 24.0,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.black,
-                                    width: 1.5,
-                                  ),
-                                ),
-                              ),
-                              const Positioned(
-                                bottom: -2,
-                                right: -2,
-                                child: CircleAvatar(
-                                  radius: 6.0,
-                                  backgroundColor: Colors.black,
-                                ),
-                              )
-                            ],
-                          ),
+                          icon: const Icon(Icons.assignment_turned_in, color: Colors.green, size: 32.0),
                           label: 'Certification',
-                          onTap: () {}, // Add functionality here
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BugueyMayorsPermitApp(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                       Expanded(
@@ -133,7 +137,7 @@ class DashboardScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: Colors.black,
+                                color: Colors.green,
                                 width: 1.5,
                               ),
                             ),
@@ -148,14 +152,20 @@ class DashboardScreen extends StatelessWidget {
                             ),
                           ),
                           label: 'Retirement',
-                          onTap: () {}, // Add functionality here
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>const RetirementDocumentsPage(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 24.0),
 
-                  // Third row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -163,20 +173,29 @@ class DashboardScreen extends StatelessWidget {
                         child: _buildMenuItem(
                           icon: const Icon(
                             Icons.notifications_outlined,
+                            color:Colors.green,
                             size: 28.0,
                           ),
                           label: 'Notification',
-                          onTap: () {}, // Add functionality here
+                          onTap: () {},
                         ),
                       ),
                       Expanded(
                         child: _buildMenuItem(
                           icon: const Icon(
                             Icons.settings,
+                            color:Colors.green,
                             size: 28.0,
                           ),
                           label: 'Settings',
-                          onTap: () {}, // Add functionality here
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SettingsScreen(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -185,38 +204,57 @@ class DashboardScreen extends StatelessWidget {
               ),
             ),
 
-            // Divider
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
               child: Container(
                 height: 1,
                 color: Colors.grey[300],
               ),
             ),
 
-            // Application Status
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                children: [
-                  const Text(
-                    'Application Status',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Application Status',
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 12.0),
-                  Container(
-                    width: double.infinity,
-                    height: 180,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey.shade300),
-                      borderRadius: BorderRadius.circular(4.0),
+                    const SizedBox(height: 12.0),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.all(12.0),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey.shade300),
+                          borderRadius: BorderRadius.circular(4.0),
+                        ),
+                        child: ListView(
+                          children: [
+                            _buildStatusItem(
+                              title: 'Business Permit Application',
+                              status: 'Pending Review',
+                              date: 'May 10, 2025',
+                              color: Colors.orange,
+                              progress: 0.4,
+                            ),
+                            _buildStatusItem(
+                              title: 'Renewal Request',
+                              status: 'Approved',
+                              date: 'May 5, 2025',
+                              color: Colors.green,
+                              progress: 1.0,
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],
@@ -229,7 +267,7 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  /// ✅ Updated to accept onTap
+  /// Menu item builder
   Widget _buildMenuItem({
     required Widget icon,
     required String label,
@@ -252,6 +290,84 @@ class DashboardScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildStatusItem({
+    required String title,
+    required String status,
+    required String date,
+    required Color color,
+    required double progress,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(Icons.description, color: Colors.blueGrey, size: 28),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14.0,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Status: $status',
+                    style: TextStyle(
+                      color: color,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  Text(
+                    'Date: $date',
+                    style: const TextStyle(
+                      fontSize: 12.0,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 8),
+        LinearProgressIndicator(
+          value: progress,
+          backgroundColor: Colors.grey[300],
+          color: color,
+          minHeight: 6,
+        ),
+        const SizedBox(height: 12),
+      ],
+    );
+  }
+}
+
+class PaymentScreen extends StatelessWidget {
+  const PaymentScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Payment'),
+        backgroundColor: const Color(0xFF1A2B47),
+      ),
+      body: const Center(
+        child: Text(
+          'Payment Page (To be implemented)',
+          style: TextStyle(fontSize: 18),
+        ),
       ),
     );
   }
